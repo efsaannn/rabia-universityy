@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabia University | Excellence & Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-navy: #0a192f;
+            --brand-gold: #c5a059;
+            --brand-accent: #172a45;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--brand-navy); background-color: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+        /* Top Info Bar */
+        .top-info { background: var(--brand-navy); color: var(--white); padding: 10px 10%; display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
+        .top-info .info-links a { color: var(--brand-gold); text-decoration: none; margin-left: 15px; cursor: pointer; transition: var(--transition); }
+        .top-info .info-links a:hover { color: var(--white); }
+
+        /* Navigation */
+        header { background: var(--white); padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition); }
+        .brand { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .brand-logo { width: 50px; height: 50px; background: var(--brand-navy); color: var(--brand-gold); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 28px; border: 2px solid var(--brand-gold); border-radius: 4px; }
+        .brand-text h1 { font-family: 'Cinzel', serif; font-size: 24px; color: var(--brand-navy); letter-spacing: 2px; }
+        .brand-text p { font-size: 10px; color: var(--brand-gold); text-transform: uppercase; font-weight: 800; }
+
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
+        nav ul li a { text-decoration: none; color: var(--brand-navy); font-weight: 700; font-size: 13px; text-transform: uppercase; transition: var(--transition); cursor: pointer; }
+        nav ul li a:hover { color: var(--brand-gold); }
+
+        .cta-apply { background: var(--brand-gold); color: var(--brand-navy) !important; padding: 12px 25px; border-radius: 2px; font-weight: 800; text-decoration: none; display: inline-block; cursor: pointer; border: none; transition: var(--transition); }
+        .cta-apply:hover { background: var(--brand-navy); color: var(--brand-gold) !important; transform: translateY(-2px); }
+
+        /* Hero Section */
+        .hero { height: 85vh; background: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; position: relative; display: flex; align-items: center; padding: 0 10%; color: var(--white); }
+        .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,25,47,0.9) 0%, rgba(10,25,47,0.4) 100%); }
+        .hero-content { position: relative; z-index: 10; max-width: 800px; }
+        .hero-content h2 { font-family: 'Cinzel', serif; font-size: 64px; margin-bottom: 20px; color: var(--brand-gold); line-height: 1.1; }
+        .hero-content p { font-size: 20px; font-weight: 300; margin-bottom: 40px; color: #ccd6f6; max-width: 600px; }
+
+        .hero-btns { display: flex; gap: 20px; }
+        .btn-outline { background: transparent; border: 2px solid var(--brand-gold); color: var(--brand-gold); padding: 18px 40px; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-outline:hover { background: var(--brand-gold); color: var(--brand-navy); }
+
+        /* Stat Bar */
+        .stat-bar { background: var(--brand-navy); display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 10%; border-top: 4px solid var(--brand-gold); }
+        .stat-box { text-align: center; color: var(--white); border-right: 1px solid rgba(255,255,255,0.1); }
+        .stat-box:last-child { border: none; }
+        .stat-box h3 { font-size: 36px; color: var(--brand-gold); font-family: 'Cinzel', serif; }
+        .stat-box p { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #8892b0; }
+
+        /* Sections */
+        section { padding: 100px 10%; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 { font-family: 'Cinzel', serif; font-size: 32px; color: var(--brand-navy); margin-bottom: 15px; }
+        .section-header .line { width: 80px; height: 3px; background: var(--brand-gold); margin: 0 auto; }
+
+        .faculty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .faculty-card { position: relative; height: 450px; overflow: hidden; border-radius: 8px; cursor: pointer; }
+        .faculty-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s; }
+        .faculty-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,25,47,0.95), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; }
+        .faculty-card:hover img { transform: scale(1.1); }
+        .faculty-overlay h3 { color: var(--brand-gold); font-family: 'Cinzel', serif; font-size: 22px; margin-bottom: 10px; }
+        .faculty-overlay p { color: #8892b0; font-size: 14px; transform: translateY(20px); opacity: 0; transition: var(--transition); }
+        .faculty-card:hover .faculty-overlay p { transform: translateY(0); opacity: 1; }
+
+        /* Features Section */
+        .why-us { background: var(--light-bg); display: flex; gap: 80px; align-items: center; }
+        .why-image { flex: 1; position: relative; }
+        .why-image img { width: 100%; border-radius: 12px; box-shadow: 30px 30px 0 var(--brand-gold); }
+        .why-content { flex: 1; }
+        .feature-item { display: flex; gap: 20px; margin-bottom: 30px; }
+        .feature-icon { width: 50px; height: 50px; background: var(--brand-navy); color: var(--brand-gold); display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 20px; flex-shrink: 0; }
+        .feature-text h4 { font-size: 18px; margin-bottom: 5px; }
+
+        /* Modals */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(10, 25, 47, 0.9); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px; }
+        .modal-content { background: var(--white); width: 100%; max-width: 550px; padding: 40px; border-radius: 8px; position: relative; transform: translateY(-50px); transition: transform 0.3s ease; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--brand-navy); }
+        .modal-content h3 { font-family: 'Cinzel', serif; color: var(--brand-navy); margin-bottom: 20px; border-bottom: 2px solid var(--brand-gold); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 11px; font-weight: 700; margin-bottom: 5px; text-transform: uppercase; color: var(--brand-navy); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+        
+        /* Custom Message Box */
+        #customAlert { position: fixed; bottom: 30px; right: 30px; background: var(--brand-navy); color: var(--brand-gold); padding: 15px 25px; border-radius: 4px; border-left: 5px solid var(--brand-gold); z-index: 3000; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.3); animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+        /* Footer */
+        footer { background: var(--brand-navy); color: #8892b0; padding: 80px 10% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 50px; }
+        .footer-col h4 { color: var(--white); font-family: 'Cinzel', serif; margin-bottom: 30px; font-size: 18px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #8892b0; text-decoration: none; transition: 0.3s; cursor: pointer; }
+        .footer-links a:hover { color: var(--brand-gold); padding-left: 10px; }
+
+        .social-links { display: flex; gap: 20px; margin-top: 20px; }
+        .social-links a { width: 40px; height: 40px; background: var(--brand-accent); color: var(--brand-gold); display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 18px; transition: 0.3s; }
+        .social-links a:hover { background: var(--brand-gold); color: var(--brand-navy); transform: translateY(-5px); }
+
+        .bottom-footer { text-align: center; padding-top: 40px; font-size: 13px; }
+
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-content h2 { font-size: 44px; }
+            .why-us { flex-direction: column; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CUSTOM ALERT MESSAGE -->
+    <div id="customAlert"></div>
+
+    <!-- MODAL: STUDENT PORTAL -->
+    <div id="portalModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('portalModal')">&times;</span>
+            <h3><i class="fas fa-user-lock"></i> Student Portal Login</h3>
+            <p style="font-size: 13px; margin-bottom: 20px; color: #666;">Access your academic records, schedules, and financial statements.</p>
+            <div class="form-group">
+                <label>Student ID Number</label>
+                <input type="text" id="portalId" placeholder="e.g., RU2024-XXXX">
+            </div>
+            <div class="form-group">
+                <label>Institutional Password</label>
+                <input type="password" id="portalPass" placeholder="••••••••">
+            </div>
+            <button class="cta-apply" style="width: 100%; margin-top: 10px;" onclick="handlePortalLogin()">Secure Sign In</button>
+            <div style="text-align: center; margin-top: 15px; font-size: 12px;">
+                <a href="#" style="color: var(--brand-navy); text-decoration: none;">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: LIBRARY CATALOG -->
+    <div id="libraryModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 700px;">
+            <span class="close-modal" onclick="closeModal('libraryModal')">&times;</span>
+            <h3><i class="fas fa-book-reader"></i> Digital Library Catalog</h3>
+            <p style="font-size: 13px; margin-bottom: 20px; color: #666;">Search across 500,000+ e-books, journals, and physical archives.</p>
+            <div class="form-group" style="position: relative;">
+                <input type="text" id="libSearch" placeholder="Search by Title, Author, or ISBN..." style="padding-left: 45px; border-radius: 50px;">
+                <i class="fas fa-search" style="position: absolute; left: 18px; top: 15px; color: #999;"></i>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px;">
+                <button class="btn-outline" style="padding: 10px; font-size: 11px;" onclick="showMessage('Searching E-Journals Database...')">E-Journals</button>
+                <button class="btn-outline" style="padding: 10px; font-size: 11px;" onclick="showMessage('Opening Archive Collections...')">Archives</button>
+                <button class="btn-outline" style="padding: 10px; font-size: 11px;" onclick="showMessage('Checking Physical Book Status...')">Book Status</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: ADMISSION APPLICATION -->
+    <div id="applyModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('applyModal')">&times;</span>
+            <h3><i class="fas fa-file-signature"></i> 2026 Admission Form</h3>
+            <div class="form-group">
+                <label>Full Legal Name</label>
+                <input type="text" id="app_name" placeholder="Johnathan Doe">
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="app_email" placeholder="j.doe@example.com">
+            </div>
+            <div class="form-group">
+                <label>Selected Faculty</label>
+                <select id="app_faculty">
+                    <option value="" disabled selected>Select a faculty...</option>
+                    <option>Engineering & Technology</option>
+                    <option>Business & Economics</option>
+                    <option>Medicine & Health Sciences</option>
+                    <option>Arts & Social Sciences</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Short Statement of Interest</label>
+                <textarea id="app_statement" rows="3" placeholder="Tell us why you chose RU..."></textarea>
+            </div>
+            <button class="cta-apply" style="width: 100%;" onclick="handleApplication()">Submit Official Application</button>
+        </div>
+    </div>
+
+    <!-- UI STRUCTURE -->
+    <div class="top-info">
+        <div><i class="fas fa-map-marker-alt"></i> Rabia Campus, Elite Education District</div>
+        <div class="info-links">
+            <a onclick="openModal('portalModal')">Student Portal</a>
+            <a onclick="openModal('libraryModal')">Digital Library</a>
+            <a onclick="scrollToSection('why-us')">News & Events</a>
+        </div>
+    </div>
+
+    <header id="mainHeader">
+        <a href="#" class="brand">
+            <div class="brand-logo">R</div>
+            <div class="brand-text">
+                <h1>RABIA UNIVERSITY</h1>
+                <p>Knowledge • Integrity • Vision</p>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a onclick="scrollToSection('why-us')">About Us</a></li>
+                <li><a onclick="scrollToSection('faculties')">Faculties</a></li>
+                <li><a onclick="showMessage('Research Portal is loading specialized datasets...')">Research</a></li>
+                <li><a onclick="scrollToSection('why-us')">Campus Life</a></li>
+                <li><a onclick="scrollToSection('footer')">Contact</a></li>
+                <li><button class="cta-apply" onclick="openModal('applyModal')">Apply Now</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Lead the Future at Rabia University</h2>
+            <p>Empowering minds through world-class education, state-of-the-art facilities, and personalized career pathways to shape the leaders of tomorrow.</p>
+            <div class="hero-btns">
+                <button class="cta-apply" style="font-size: 16px; padding: 18px 40px;" onclick="scrollToSection('why-us')">Explore Campus</button>
+                <button class="btn-outline" onclick="scrollToSection('faculties')">Academic Programs</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-bar">
+        <div class="stat-box">
+            <h3>50+</h3>
+            <p>Academic Departments</p>
+        </div>
+        <div class="stat-box">
+            <h3>12K</h3>
+            <p>Global Students</p>
+        </div>
+        <div class="stat-box">
+            <h3>95%</h3>
+            <p>Employment Rate</p>
+        </div>
+        <div class="stat-box">
+            <h3>150</h3>
+            <p>International Partners</p>
+        </div>
+    </div>
+
+    <section id="faculties">
+        <div class="section-header">
+            <h2>Our Academic World</h2>
+            <p>Pushing the boundaries of research and education through innovative models of excellence.</p>
+            <div class="line"></div>
+        </div>
+
+        <div class="faculty-grid">
+            <div class="faculty-card" onclick="showMessage('Loading Engineering Course Handbook...')">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Engineering Faculty">
+                <div class="faculty-overlay">
+                    <h3>Engineering & Technology</h3>
+                    <p>From Artificial Intelligence to Sustainable Energy, we train engineers who design the technologies of the future.</p>
+                </div>
+            </div>
+            <div class="faculty-card" onclick="showMessage('Loading Business & Management Syllabi...')">
+                <img src="https://images.unsplash.com/photo-1454165833767-1316b34460a5?auto=format&fit=crop&w=800&q=80" alt="Business Faculty">
+                <div class="faculty-overlay">
+                    <h3>Business & Economics</h3>
+                    <p>The premier destination for innovative entrepreneurs and strategists who will lead global markets.</p>
+                </div>
+            </div>
+            <div class="faculty-card" onclick="showMessage('Redirecting to Clinical Sciences Division...')">
+                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80" alt="Health Sciences">
+                <div class="faculty-overlay">
+                    <h3>Medicine & Health Sciences</h3>
+                    <p>Setting global healthcare standards with our high-tech teaching hospitals and expert academic faculty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="why-us">
+        <div class="why-image">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" alt="Rabia University Campus">
+        </div>
+        <div class="why-content">
+            <div class="section-header" style="text-align: left;">
+                <h2 style="font-size: 40px;">Why Rabia University?</h2>
+                <div class="line" style="margin: 0;"></div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-award"></i></div>
+                <div class="feature-text">
+                    <h4>Culture of Achievement</h4>
+                    <p>A boutique education approach focused on maximizing the unique potential of every student.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                <div class="feature-text">
+                    <h4>Global Career Network</h4>
+                    <p>Our graduates start their careers one step ahead with a vast network of global corporate partners.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-flask-vial"></i></div>
+                <div class="feature-text">
+                    <h4>Advanced Research Labs</h4>
+                    <p>State-of-the-art research centers equipped with the latest technology to turn theory into practice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h2 style="color:var(--brand-gold); font-family:'Cinzel'; margin-bottom:20px;">Rabia University</h2>
+                <p>Illuminating the future through the power of knowledge. Combining personal success with social impact.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/fsuniversity.official" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/fsuniversity.official" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/fsuniversity" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/school/fs-university-shikohabad/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a onclick="showMessage('Scholarship Portal: Registration starts in Feb 2026.')">Scholarships</a></li>
+                    <li><a onclick="showMessage('Academic Calendar 2026 PDF is being prepared.')">Academic Calendar</a></li>
+                    <li><a onclick="showMessage('Opening Virtual 3D Campus Tour...')">Campus Map</a></li>
+                    <li><a onclick="showMessage('Connecting to Career Center Mentors...')">Career Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Institutional</h4>
+                <ul class="footer-links">
+                    <li><a onclick="scrollToSection('why-us')">About Us</a></li>
+                    <li><a onclick="showMessage('RU Vision 2030: Leading Global Innovation.')">Vision & Mission</a></li>
+                    <li><a onclick="showMessage('Quality Assurance Policy Document 4.0')">Quality Policy</a></li>
+                    <li><a onclick="showMessage('Accessing Board Member Directory...')">Board of Trustees</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone" style="color:var(--brand-gold); margin-right:10px;"></i> +1 555 123 45 67</p>
+                <p style="margin-top:10px;"><i class="fas fa-envelope" style="color:var(--brand-gold); margin-right:10px;"></i> info@rabia.edu</p>
+                <p style="margin-top:20px;">Elite Campus, Innovation District, Suite 405</p>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <p>&copy; 2026 Rabia University | All Rights Reserved. Education for a New Era.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Custom message logic
+        function showMessage(text) {
+            const alertBox = document.getElementById('customAlert');
+            alertBox.innerText = text;
+            alertBox.style.display = 'block';
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3500);
+        }
+
+        // Smooth scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if(element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            }
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        // Action Handlers
+        function handlePortalLogin() {
+            const id = document.getElementById('portalId').value;
+            if(!id) return showMessage('Please enter your Student ID.');
+            showMessage('Establishing secure connection to student databases...');
+            setTimeout(() => {
+                closeModal('portalModal');
+                showMessage('Access Denied: Please verify your credentials at the registrar office.');
+            }, 1500);
+        }
+
+        function handleApplication() {
+            const name = document.getElementById('app_name').value;
+            const faculty = document.getElementById('app_faculty').value;
+            if(!name || !faculty) return showMessage('Please fill in all required fields.');
+            
+            showMessage(`Processing application for ${name}...`);
+            setTimeout(() => {
+                closeModal('applyModal');
+                showMessage('Success! Your application ID is RU-APP-' + Math.floor(1000 + Math.random() * 9000));
+            }, 2000);
+        }
+
+        // Global click handler for modals
+        window.onclick = function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                closeModal(e.target.id);
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 10%';
+            } else {
+                header.style.padding = '20px 10%';
+            }
+        });
+    </script>
+</body>
+</html>
